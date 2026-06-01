@@ -1,0 +1,460 @@
+/* --- CONFIGURACIÓN DE COLORES CORPORATIVOS --- */
+:root {
+    --blue-main: #2B66F5;       /* Azul Rey del Isotipo */
+    --blue-light: #70A1FF;      /* Azul Cielo */
+    --bg-light: #F8FAFC;        /* Gris limpio de catálogo */
+    --text-dark: #1E293B;       /* Color base tipográfico */
+    --text-muted: #64748B;      /* Títulos secundarios */
+}
+
+/* --- REGLAS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+body {
+    background-color: #FFFFFF;
+    color: var(--text-dark);
+    padding-top: 130px;
+}
+
+/* --- BANNER DE ANUNCIO --- */
+.top-announcement {
+    background-color: var(--text-dark);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1100;
+}
+
+/* --- HEADER / NAVEGACIÓN --- */
+header {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #E2E8F0;
+    position: fixed;
+    top: 32px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-row {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-btn {
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 3px;
+}
+
+.brand-logo .rp-txt {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--blue-main);
+}
+
+.brand-logo .scrubs-txt {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.6rem;
+    color: var(--blue-light);
+}
+
+.brand-logo .bee-icon {
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-icons a {
+    color: var(--text-dark);
+    text-decoration: none;
+    position: relative;
+}
+
+.header-icons .badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--blue-main);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--blue-main);
+}
+
+/* --- CONTENEDOR MULTICOLUMNA --- */
+.layout-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+}
+
+.sidebar-filters {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.filter-section {
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.color-dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.color-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 2px;
+    border: 1px solid #CBD5E1;
+    cursor: pointer;
+}
+
+.filter-list {
+    list-style: none;
+}
+
+.filter-list li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.filter-list li:hover {
+    color: var(--blue-main);
+}
+
+/* --- GALERÍA DE CATÁLOGO --- */
+.main-content {
+    flex-grow: 1;
+}
+
+.catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 15px;
+}
+
+.catalog-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.products-count {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-item {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-image-box {
+    background-color: var(--bg-light);
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.placeholder-art {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.placeholder-art .material-icons {
+    font-size: 3rem;
+    color: #CBD5E1;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.tag-sale {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #EF4444;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    text-transform: uppercase;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.prod-brand {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.prod-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.price-row {
+    margin-top: 2px;
+}
+
+.current-price {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--blue-main);
+}
+
+.prod-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 10px 0 0 0;
+}
+
+.full-select-row {
+    margin: 8px 0;
+}
+
+.full-select-row select {
+    width: 100%;
+}
+
+select {
+    padding: 8px;
+    font-size: 0.8rem;
+    border: 1px solid #E2E8F0;
+    background-color: #FFFFFF;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-add {
+    background-color: var(--text-dark);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.btn-add:hover {
+    background-color: var(--blue-main);
+}
+
+/* --- COMPLEMENTOS Y PIE DE PÁGINA --- */
+.about-section {
+    background-color: var(--bg-light);
+    padding: 60px 40px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.cart-section {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    border: 1px solid #E2E8F0;
+}
+
+.cart-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #F1F5F9;
+    font-size: 0.9rem;
+}
+
+.cart-total-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+footer {
+    background-color: #121824;
+    color: #FFFFFF;
+    padding: 60px 40px 30px 40px;
+}
+
+.footer-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    border-bottom: 1px solid #222F43;
+    padding-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #94A3B8;
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #CBD5E1;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.footer-col p {
+    font-size: 0.85rem;
+    color: #CBD5E1;
+    margin-bottom: 15px;
+}
+
+.newsletter-box {
+    display: flex;
+}
+
+.newsletter-box input {
+    background: #1E293B;
+    border: 1px solid #334155;
+    padding: 10px;
+    color: white;
+    font-size: 0.85rem;
+    flex-grow: 1;
+    outline: none;
+}
+
+.newsletter-box button {
+    background-color: var(--blue-main);
+    color: white;
+    border: none;
+    padding: 0 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #64748B;
+}
+
+.footer-bottom-brand {
+    font-family: 'Fredoka', sans-serif;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 992px) {
+    .layout-container { flex-direction: column; }
+    .sidebar-filters { width: 100%; }
+    nav { display: none; }
+}

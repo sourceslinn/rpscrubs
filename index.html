@@ -5,18 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RP Scrubs | Tienda Oficial</title>
     
-    <!-- Fuentes de Google: Inter y Fredoka para el estilo de marca -->
+    <!-- Fuentes e Iconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Iconos de Material Design -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!-- Vinculación del CSS Externo -->
-    <link rel="stylesheet" href="style.css">
+
+    <!-- EL DISEÑO INYECTADO DIRECTO AQUÍ -->
+    <style>
+        :root {
+            --blue-main: #2B66F5;
+            --blue-light: #70A1FF;
+            --bg-light: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+        }
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Inter', sans-serif; letter-spacing: -0.02em;
+        }
+        body { background-color: #FFFFFF; color: var(--text-dark); padding-top: 130px; }
+        
+        /* ... PEGA AQUÍ TODO EL RESTO DEL CÓDIGO CSS QUE TE DI ANTES ... */
+        
+        @media (max-width: 992px) {
+            .layout-container { flex-direction: column; }
+            .sidebar-filters { width: 100%; }
+            nav { display: none; }
+        }
+    </style>
 </head>
 <body>
-
+    <!-- Aquí sigue todo tu código HTML normal (Header, Productos, Footer...) -->
     <!-- CINTA DE ANUNCIO SUPERIOR -->
     <div class="top-announcement">
         Bienvenido, muchas gracias por tu visita • Scrubs... De los buenos 🐝

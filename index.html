@@ -5,523 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RP Scrubs | Tienda Oficial</title>
     
-    <!-- Fuentes modernas: Inter para textos y Lavishly Yours / Fredoka si se requiere emular el logo, pero usaremos Inter para máxima legibilidad e-commerce -->
+    <!-- Fuentes de Google: Inter y Fredoka para el estilo de marca -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Iconos de Google -->
+    <!-- Iconos de Material Design -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <style>
-        /* --- COLORES OFICIALES RP SCRUBS (Basados en image_5.png y image_6.png) --- */
-        :root {
-            --blue-main: #2B66F5;       /* Azul Rey del logo principal */
-            --blue-light: #70A1FF;      /* Azul Cielo complementario */
-            --bg-light: #F8FAFC;        /* Fondo gris/azul ultra claro y limpio */
-            --text-dark: #1E293B;       /* Gris oscuro para textos principales */
-            --text-muted: #64748B;      /* Gris suave para descripciones */
-            --accent-yellow: #FAD02C;   /* Amarillo de las flores del logo */
-        }
-
-        /* --- RESET DE ESTILOS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: -0.02em;
-        }
-
-        body {
-            background-color: #FFFFFF;
-            color: var(--text-dark);
-            padding-top: 130px; /* Espacio para la barra superior fija */
-        }
-
-        /* --- CINTA DE ANUNCIO SUPERIOR --- */
-        .top-announcement {
-            background-color: var(--text-dark);
-            color: #FFFFFF;
-            text-align: center;
-            padding: 8px 10px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1100;
-        }
-
-        /* --- BARRA DE NAVEGACIÓN (Estilo image_2.png) --- */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #E2E8F0;
-            position: fixed;
-            top: 32px; /* Abajo de la cinta de anuncio */
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 15px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* Contenedor Medio del Header */
-        .header-row {
-            width: 100%;
-            max-width: 1400px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Render Digital de tu Logo */
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            gap: 5px;
-        }
-
-        .brand-logo .rp-txt {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--blue-main);
-            line-height: 1;
-        }
-
-        .brand-logo .scrubs-txt {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 1.6rem;
-            color: var(--blue-light);
-            margin-left: 2px;
-        }
-
-        .brand-logo .bee-icon {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        /* Menú de Categorías (Estilo exacto a image_2.png) */
-        nav {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--blue-main);
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .header-icons a {
-            color: var(--text-dark);
-            text-decoration: none;
-            position: relative;
-        }
-
-        .header-icons .badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--blue-main);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 50%;
-        }
-
-        /* --- CUERPO PRINCIPAL DEL E-COMMERCE (Estilo image_2.png / image_3.png) --- */
-        .layout-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px;
-            display: flex;
-            gap: 40px;
-        }
-
-        /* Sidebar Izquierdo de Filtros Fijo */
-        .sidebar-filters {
-            width: 250px;
-            flex-shrink: 0;
-        }
-
-        .filter-section {
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-
-        .filter-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        /* Muestras de Color en Filtros (Como en image_2.png) */
-        .color-dots {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .color-dot {
-            width: 22px;
-            height: 22px;
-            border-radius: 2px;
-            border: 1px solid #CBD5E1;
-            cursor: pointer;
-        }
-
-        /* Lista de Categorías Lateral (Como en image_3.png) */
-        .filter-list {
-            list-style: none;
-        }
-
-        .filter-list li {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .filter-list li:hover {
-            color: var(--blue-main);
-        }
-
-        /* Área de Contenido de Productos */
-        .main-content {
-            flex-grow: 1;
-        }
-
-        .catalog-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 15px;
-        }
-
-        .catalog-title {
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-
-        .products-count {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* GRID DE PRODUCTOS PROFESIONAL */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-item {
-            background: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        /* Contenedor de Imagen de catálogo limpio */
-        .product-image-box {
-            background-color: var(--bg-light);
-            aspect-ratio: 3 / 4; /* Proporción vertical de catálogo de moda */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-
-        .product-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .tag-sale {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background-color: #EF4444;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-details {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .prod-brand {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .prod-name {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            text-decoration: none;
-        }
-
-        .price-row {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-top: 2px;
-        }
-
-        .current-price {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--blue-main);
-        }
-
-        /* Selectores integrados limpiamente */
-        .prod-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 10px 0;
-        }
-
-        select {
-            padding: 8px;
-            font-size: 0.8rem;
-            border: 1px solid #E2E8F0;
-            background-color: #FFFFFF;
-            color: var(--text-dark);
-            outline: none;
-            cursor: pointer;
-        }
-
-        .btn-add {
-            background-color: var(--text-dark);
-            color: #FFFFFF;
-            border: none;
-            padding: 10px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            width: 100%;
-        }
-
-        .btn-add:hover {
-            background-color: var(--blue-main);
-        }
-
-        /* --- SECCIÓN SOBRE NOSOTROS --- */
-        .about-section {
-            background-color: var(--bg-light);
-            padding: 60px 40px;
-            text-align: center;
-            margin-top: 60px;
-            border-top: 1px solid #E2E8F0;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-content h2 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: var(--blue-main);
-        }
-
-        .about-content p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        /* --- SECCIÓN DEL CARRITO DE COMPRAS --- */
-        .cart-section {
-            max-width: 600px;
-            margin: 60px auto;
-            padding: 30px;
-            border: 1px solid #E2E8F0;
-            background: #FFFFFF;
-        }
-
-        .cart-title {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #F1F5F9;
-            font-size: 0.9rem;
-        }
-
-        .cart-total-box {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        /* --- FOOTER DE MARCA (Diseño exacto de image_4.png) --- */
-        footer {
-            background-color: #121824; /* Fondo ultra oscuro industrial */
-            color: #FFFFFF;
-            padding: 60px 40px 30px 40px;
-            margin-top: 80px;
-        }
-
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            border-bottom: 1px solid #222F43;
-            padding-bottom: 40px;
-        }
-
-        .footer-col h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            color: #94A3B8;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col ul li a {
-            color: #CBD5E1;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.2s;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--blue-light);
-        }
-
-        /* Formulario de Boletín (image_4.png) */
-        .footer-col p {
-            font-size: 0.85rem;
-            color: #CBD5E1;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .newsletter-box {
-            display: flex;
-            gap: 10px;
-        }
-
-        .newsletter-box input {
-            background: #1E293B;
-            border: 1px solid #334155;
-            padding: 10px;
-            color: white;
-            font-size: 0.85rem;
-            flex-grow: 1;
-            outline: none;
-        }
-
-        .newsletter-box button {
-            background-color: var(--blue-main);
-            color: white;
-            border: none;
-            padding: 0 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: #64748B;
-        }
-
-        .footer-bottom-brand {
-            font-family: 'Fredoka', sans-serif;
-            color: #FFFFFF;
-            font-size: 1.2rem;
-        }
-
-        /* RESPONSIVO AJUSTES */
-        @media (max-width: 992px) {
-            .layout-container { flex-direction: column; }
-            .sidebar-filters { width: 100%; }
-            header { padding: 15px 20px; }
-            nav { display: none; } /* En móviles ocultamos menú simple por espacio */
-        }
-    </style>
+    
+    <!-- Vinculación del CSS Externo -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ANUNCIO GLOBAL -->
+    <!-- CINTA DE ANUNCIO SUPERIOR -->
     <div class="top-announcement">
         Bienvenido, muchas gracias por tu visita • Scrubs... De los buenos 🐝
     </div>
@@ -529,27 +26,24 @@
     <!-- CABECERA PRINCIPAL -->
     <header>
         <div class="header-row">
-            <!-- Icono Buscar ficticio izquierdo estilo imagen -->
-            <a href="#" style="color: var(--text-dark); text-decoration:none;"><span class="material-icons">search</span></a>
+            <a href="#" class="search-btn"><span class="material-icons">search</span></a>
             
-            <!-- Tu Logo Identitario de image_5.png -->
+            <!-- Logo Oficial Corporativo (Ref: image_5.png) -->
             <a href="#" class="brand-logo">
                 <span class="rp-txt">RP</span>
                 <span class="scrubs-txt">Scrubs</span>
                 <span class="bee-icon">🐝</span>
             </a>
 
-            <!-- Acciones e Icono de Carrito -->
             <div class="header-icons">
                 <a href="#"><span class="material-icons">person</span></a>
-                <a href="#mi-pedido">
+                <a href="#mi-pedido" class="cart-anchor">
                     <span class="material-icons">shopping_bag</span>
                     <span class="badge" id="cart-count">0</span>
                 </a>
             </div>
         </div>
 
-        <!-- Menú Estilo Catálogo Premium -->
         <nav>
             <a href="#">Inicio</a>
             <a href="#productos-seccion">Scrubs Mujer</a>
@@ -561,7 +55,7 @@
     <!-- CONTENEDOR DE TIENDA -->
     <div class="layout-container" id="productos-seccion">
         
-        <!-- SIDEBAR DE FILTROS (Inspirado en image_2.png) -->
+        <!-- SIDEBAR DE FILTROS (Ref: image_2.png) -->
         <aside class="sidebar-filters">
             <div class="filter-section">
                 <h4 class="filter-title">Categorías</h4>
@@ -576,10 +70,10 @@
             <div class="filter-section">
                 <h4 class="filter-title">Color</h4>
                 <div class="color-dots">
-                    <div class="color-dot" style="background-color: #1E293B;" title="Oxford"></div>
+                    <div class="color-dot" style="background-color: #1E293B;" title="Gris Oxford"></div>
                     <div class="color-dot" style="background-color: #0F172A;" title="Negro"></div>
-                    <div class="color-dot" style="background-color: #1D4ED8;" title="Azul Rey"></div>
-                    <div class="color-dot" style="background-color: #38BDF8;" title="Azul Cielo"></div>
+                    <div class="color-dot" style="background-color: #2B66F5;" title="Azul Rey"></div>
+                    <div class="color-dot" style="background-color: #70A1FF;" title="Azul Cielo"></div>
                     <div class="color-dot" style="background-color: #581C87;" title="Morado"></div>
                     <div class="color-dot" style="background-color: #FFFFFF;" title="Blanco"></div>
                 </div>
@@ -597,30 +91,27 @@
             </div>
         </aside>
 
-        <!-- GRILLA DE PRODUCTOS -->
+        <!-- CONTENIDO PRINCIPAL -->
         <main class="main-content">
             <div class="catalog-header">
                 <h2 class="catalog-title">Colección Disponible</h2>
-                <div class="products-count">3 Productos listados</div>
+                <div class="products-count">3 Modelos Disponibles</div>
             </div>
 
             <div class="products-grid">
                 
-                <!-- Producto 1 -->
-                <div class="product-item" data-name="Uniforme Modelo Daila" data-price="480">
+                <!-- Producto 1: Daila -->
+                <div class="product-item" data-id="1" data-name="Uniforme Modelo Daila" data-price="480">
                     <div class="product-image-box">
-                        <!-- Marcador de posición visual premium en lo que pones fotos reales -->
-                        <div style="text-align:center; color: var(--text-muted); font-size:0.8rem;">
-                            <span class="material-icons" style="font-size:3rem; color:#CBD5E1; display:block; margin-bottom:10px;">checkroom</span>
-                            Modelo Daila
+                        <div class="placeholder-art">
+                            <span class="material-icons">checkroom</span>
+                            <p>Modelo Daila</p>
                         </div>
                     </div>
                     <div class="product-details">
                         <span class="prod-brand">RP SCRUBS</span>
                         <a href="#" class="prod-name">Uniforme Médico Modelo Daila</a>
-                        <div class="price-row">
-                            <span class="current-price">$480.00 MXN</span>
-                        </div>
+                        <div class="price-row"><span class="current-price">$480.00 MXN</span></div>
                         
                         <div class="prod-options">
                             <select class="prod-size">
@@ -633,24 +124,22 @@
                                 <option value="Tono Estándar">Estándar</option>
                             </select>
                         </div>
-                        <button class="btn-add" onclick="addItemToCart(this)">Añadir al carrito</button>
+                        <button class="btn-add">Añadir al carrito</button>
                     </div>
                 </div>
 
-                <!-- Producto 2 -->
-                <div class="product-item" data-name="Uniforme Recto" data-price="470">
+                <!-- Producto 2: Recto -->
+                <div class="product-item" data-id="2" data-name="Uniforme Recto" data-price="470">
                     <div class="product-image-box">
-                        <div style="text-align:center; color: var(--text-muted); font-size:0.8rem;">
-                            <span class="material-icons" style="font-size:3rem; color:#CBD5E1; display:block; margin-bottom:10px;">checkroom</span>
-                            Corte Recto Tradicional
+                        <div class="placeholder-art">
+                            <span class="material-icons">checkroom</span>
+                            <p>Corte Recto</p>
                         </div>
                     </div>
                     <div class="product-details">
                         <span class="prod-brand">RP SCRUBS</span>
                         <a href="#" class="prod-name">Uniforme Médico de Corte Recto</a>
-                        <div class="price-row">
-                            <span class="current-price">$470.00 MXN</span>
-                        </div>
+                        <div class="price-row"><span class="current-price">$470.00 MXN</span></div>
                         
                         <div class="prod-options">
                             <select class="prod-style">
@@ -663,33 +152,31 @@
                                 <option value="G">Talla: G</option>
                             </select>
                         </div>
-                        <div style="margin-bottom:10px;">
-                            <select class="prod-color" style="width:100%;">
+                        <div class="full-select-row">
+                            <select class="prod-color">
                                 <option value="Oxford">Gris Oxford</option>
                                 <option value="Negro">Negro Absoluto</option>
                                 <option value="Marino">Azul Marino</option>
                                 <option value="Blanco">Blanco Clínico</option>
                             </select>
                         </div>
-                        <button class="btn-add" onclick="addItemToCart(this)">Añadir al carrito</button>
+                        <button class="btn-add">Añadir al carrito</button>
                     </div>
                 </div>
 
-                <!-- Producto 3 -->
-                <div class="product-item" data-name="Uniforme Jogger" data-price="470">
+                <!-- Producto 3: Jogger -->
+                <div class="product-item" data-id="3" data-name="Uniforme Jogger" data-price="470">
                     <div class="product-image-box">
                         <span class="tag-sale">Hot Sale</span>
-                        <div style="text-align:center; color: var(--text-muted); font-size:0.8rem;">
-                            <span class="material-icons" style="font-size:3rem; color:#CBD5E1; display:block; margin-bottom:10px;">checkroom</span>
-                            Estilo Jogger Moderno
+                        <div class="placeholder-art">
+                            <span class="material-icons">checkroom</span>
+                            <p>Estilo Jogger</p>
                         </div>
                     </div>
                     <div class="product-details">
                         <span class="prod-brand">RP SCRUBS</span>
                         <a href="#" class="prod-name">Uniforme Médico Tipo Jogger</a>
-                        <div class="price-row">
-                            <span class="current-price">$470.00 MXN</span>
-                        </div>
+                        <div class="price-row"><span class="current-price">$470.00 MXN</span></div>
                         
                         <div class="prod-options">
                             <select class="prod-style">
@@ -704,14 +191,14 @@
                                 <option value="XG">Talla: XG</option>
                             </select>
                         </div>
-                        <div style="margin-bottom:10px;">
-                            <select class="prod-color" style="width:100%;">
+                        <div class="full-select-row">
+                            <select class="prod-color">
                                 <option value="Azul">Azul Eléctrico</option>
                                 <option value="Negro">Negro</option>
                                 <option value="Morado">Morado Imperial</option>
                             </select>
                         </div>
-                        <button class="btn-add" onclick="addItemToCart(this)">Añadir al carrito</button>
+                        <button class="btn-add">Añadir al carrito</button>
                     </div>
                 </div>
 
@@ -724,15 +211,14 @@
         <div class="about-content">
             <h2>Sobre RP Scrubs</h2>
             <p>Diseñamos indumentaria médica de la más alta calidad, priorizando tu comodidad y estilo durante las largas jornadas de trabajo. "Scrubs... De los buenos" no es solo un lema, es nuestro estándar diario de confección.</p>
-            <p style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">Nuestros Valores: Confort Absoluto • Diseño Moderno • Durabilidad Textil</p>
         </div>
     </section>
 
-    <!-- SECCIÓN INTERACTIVA DE PEDIDO -->
+    <!-- SECCIÓN DEL CARRITO -->
     <section class="cart-section" id="mi-pedido">
         <h3 class="cart-title">Tu Bolsa de Compras</h3>
         <div id="cart-items-wrapper">
-            <p style="text-align: center; color: var(--text-muted); padding: 15px; font-size: 0.9rem;">No has añadido ningún uniforme aún.</p>
+            <p class="empty-msg">No has añadido ningún uniforme aún.</p>
         </div>
         <div class="cart-total-box">
             <span>Total Estimado:</span>
@@ -740,7 +226,7 @@
         </div>
     </section>
 
-    <!-- FOOTER PROFESIONAL (Estilo estructurado de image_4.png) -->
+    <!-- FOOTER PREMIUM (Ref: image_4.png) -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -750,7 +236,6 @@
                     <li><a href="#">Políticas de Facturación</a></li>
                     <li><a href="#">Políticas de Devoluciones</a></li>
                     <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos de Servicio</a></li>
                 </ul>
             </div>
             
@@ -759,8 +244,8 @@
                 <ul>
                     <li><a href="#">¿Cómo usar tus cupones?</a></li>
                     <li><a href="#">Preguntas Frecuentes</a></li>
-                    <li><a href="https://www.facebook.com/share/1L6nA9K7yT/?mibextid=wwXIfr" target="_blank">Contacto vía Facebook</a></li>
-                    <li><a href="https://www.instagram.com/rp_scrubs?igsh=ZGF1NWV0eWo3dnN2" target="_blank">Seguir en Instagram</a></li>
+                    <li><a href="https://www.facebook.com/share/1L6nA9K7yT/?mibextid=wwXIfr" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/rp_scrubs?igsh=ZGF1NWV0eWo3dnN2" target="_blank">Instagram</a></li>
                 </ul>
             </div>
 
@@ -776,55 +261,11 @@
 
         <div class="footer-bottom">
             <div class="footer-bottom-brand">RP Scrubs 🐝</div>
-            <div>&copy; 2026 RP Scrubs. Todos los derechos reservados. Hecho con pasión para profesionales de la salud.</div>
+            <div>&copy; 2026 RP Scrubs. Todos los derechos reservados.</div>
         </div>
     </footer>
 
-    <!-- LÓGICA DE FUNCIONAMIENTO INTERACTIVO -->
-    <script>
-        let shoppingCart = [];
-
-        function addItemToCart(buttonElement) {
-            const productCard = buttonElement.closest('.product-item');
-            const name = productCard.getAttribute('data-name');
-            const price = parseFloat(productCard.getAttribute('data-price'));
-            
-            const size = productCard.querySelector('.prod-size')?.value || 'Estándar';
-            const color = productCard.querySelector('.prod-color')?.value || 'Único';
-            const style = productCard.querySelector('.prod-style')?.value ? ` (${productCard.querySelector('.prod-style').value})` : '';
-            
-            const itemDescription = `${name}${style} [Talla: ${size} / Color: ${color}]`;
-            
-            shoppingCart.push({ description: itemDescription, price: price });
-            renderCart();
-        }
-
-        function renderCart() {
-            const listWrapper = document.getElementById('cart-items-wrapper');
-            const totalSumElement = document.getElementById('cart-total-sum');
-            const countBadge = document.getElementById('cart-count');
-            
-            countBadge.innerText = shoppingCart.length;
-            
-            if (shoppingCart.length === 0) {
-                listWrapper.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 15px; font-size: 0.9rem;">No has añadido ningún uniforme aún.</p>';
-                totalSumElement.innerText = '0.00';
-                return;
-            }
-            
-            listWrapper.innerHTML = '';
-            let accumulatedTotal = 0;
-            
-            shoppingCart.forEach((item) => {
-                accumulatedTotal += item.price;
-                const row = document.createElement('div');
-                row.className = 'cart-item';
-                row.innerHTML = `<span>🐝 ${item.description}</span><strong>$${item.price}.00</strong>`;
-                listWrapper.appendChild(row);
-            });
-            
-            totalSumElement.innerText = accumulatedTotal.toFixed(2);
-        }
-    </script>
+    <!-- Vinculación del Script JS Externo -->
+    <script src="script.js"></script>
 </body>
 </html>
